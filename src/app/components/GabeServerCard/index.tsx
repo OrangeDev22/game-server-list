@@ -11,19 +11,20 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
   gameServer,
   onToggleServer,
 }) => {
-  const { id, name, game, players, status, version, mods } = gameServer;
+  const { id, name, game, players, status, version, mods, region, type } =
+    gameServer;
 
   return (
     <div className="space-y-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 max-w-sm w-full md:max-w-md lg:max-w-lg">
       <div className="flex items-center justify-between">
-        <div className="flex gap-2 items-center">
+        <div className="space-y-2 items-center">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
             {name}
           </h3>
-          <span className="text-sm">
-            <span className="font-bold">V</span>
-            {version}
-          </span>
+          <div className="space-y-1 text-xs">
+            <p>{`Region: ${region}`}</p>
+            <p>{`Version: ${version}`}</p>
+          </div>
         </div>
         <span
           className={twMerge(
@@ -38,8 +39,9 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
       </div>
 
       <div className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
-        <p>{game}</p>
-        <p>{players}</p>
+        <p>{`Game: ${game}`}</p>
+        <p>{`Current Players: ${players}`}</p>
+        <p>{`Mode: ${type}`}</p>
         <p>{`Mods: ${mods.length > 0 ? "Yes" : "No"}`}</p>
       </div>
 
