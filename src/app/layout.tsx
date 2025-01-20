@@ -28,7 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ToggleThemeButton />
+        <nav className="bg-black mx-auto px-4 py-2 flex justify-end">
+          <ToggleThemeButton />
+        </nav>
         {children}
       </body>
     </html>

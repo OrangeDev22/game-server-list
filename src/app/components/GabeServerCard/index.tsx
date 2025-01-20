@@ -16,7 +16,7 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
 
   return (
     <div className="space-y-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 max-w-sm w-full md:max-w-md lg:max-w-lg">
-      <div className="flex items-center justify-between">
+      <div className="flex justify-between">
         <div className="space-y-2 items-center">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
             {name}
@@ -26,9 +26,10 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
             <p>{`Version: ${version}`}</p>
           </div>
         </div>
+
         <span
           className={twMerge(
-            "text-sm font-medium px-3 py-1 rounded-full",
+            "text-sm font-medium px-3 py-1 rounded-full h-7",
             status === "online"
               ? "bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-200"
               : "bg-red-200 text-red-800 dark:bg-red-900 dark:text-red-200"
@@ -42,7 +43,7 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
         <p>{`Game: ${game}`}</p>
         <p>{`Current Players: ${players}`}</p>
         <p>{`Mode: ${type}`}</p>
-        <p>{`Mods: ${mods.length > 0 ? "Yes" : "No"}`}</p>
+        <p>{`Mods: ${mods.length === 0 ? "No" : mods.join(", ")}`}</p>
       </div>
 
       <button
