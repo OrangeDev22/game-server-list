@@ -15,7 +15,7 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
     gameServer;
 
   return (
-    <div className="space-y-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 max-w-sm w-full md:max-w-md lg:max-w-lg">
+    <div className="flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 max-w-sm w-full md:max-w-md lg:max-w-lg">
       <div className="flex justify-between">
         <div className="space-y-2 items-center">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
@@ -49,7 +49,7 @@ const GameServerCard: React.FC<GameServerCardProps> = ({
       <button
         onClick={() => onToggleServer(id)}
         className={twMerge(
-          "w-full py-2 rounded-md text-white font-semibold transition",
+          "mt-auto w-full py-2 rounded-md text-white font-semibold transition",
           status === "online"
             ? "bg-red-500 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-800"
             : "bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
