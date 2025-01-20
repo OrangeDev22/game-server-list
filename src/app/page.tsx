@@ -1,5 +1,5 @@
-"use client";
-import { useEffect, useState } from "react";
+import GameServerList from "./components/GameServerList";
+import { GameServer } from "./types";
 
 /*
   Welcome to the simplegamehosting coding assignment!
@@ -17,37 +17,13 @@ import { useEffect, useState } from "react";
   for extra info please read the README.md file in the root of the project.
 */
 
-export default function Home() {
-  const [serverData, setServerData] = useState(null);
-  // you can update this fetching code if required but it's not necessary for the assignment.
-  useEffect(() => {
-    const fetchServerData = async () => {
-      try {
-        const response = await fetch("/api/mock");
-        const data = await response.json();
-        setServerData(data);
-      } catch (error) {
-        console.error("Failed to fetch server data:", error);
-      }
-    };
-
-    fetchServerData();
-  }, []);
+export default async function Home() {
+  const response = await fetch("http://localhost:3000/api/mock");
+  const data: GameServer[] = await response.json();
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      {/* main can be deleted and replaced with your own cards */}
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-2xl font-bold">Minecraft Server List</h1>
-        <p className="text-gray-600">
-          Below is the JSON data fetched from <code>/api/mock</code>. Use it to
-          build the UI.
-        </p>
-        <pre className="bg-gray-200 text-gray-800 p-4 rounded-lg w-full overflow-auto max-w-4xl text-sm">
-          {serverData ? JSON.stringify(serverData, null, 2) : "Loading data..."}
-        </pre>
-      </main>
-      {/* main can be deleted and replaced with your own cards */}
-    </div>
+    <main className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen p-8 sm:p-20">
+      <GameServerList serverList={data} />
+    </main>
   );
 }
